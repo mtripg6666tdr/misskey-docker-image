@@ -1,4 +1,4 @@
-name: master - Build and Push
+name: master arm64  - Build and Push
 
 on: [ workflow_dispatch ]
 
@@ -37,11 +37,11 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/misskey-master:latest
-            ghcr.io/${{ github.repository_owner }}/misskey-master:${{ steps.version.outputs.VER }}
+            ghcr.io/${{ github.repository_owner }}/misskey-arm64:latest
+            ghcr.io/${{ github.repository_owner }}/misskey-arm64:${{ steps.version.outputs.VER }}
           cache-from: type=registry,ref=user/app:latest
           cache-to: type=inline
 
