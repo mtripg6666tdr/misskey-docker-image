@@ -10,14 +10,14 @@ jobs:
         name: Get Version
         id: version
         run: |
-          ver=`curl -s https://raw.githubusercontent.com/misskey-dev/misskey/master/package.json | jq -r '.version'`
+          ver=`curl -s https://raw.githubusercontent.com/minetaro12/misskey/master-arm64/package.json | jq -r '.version'`
           echo "::set-output name=VER::$ver"
       - 
         name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: misskey-dev/misskey
-          ref: master
+          repository: minetaro12/misskey
+          ref: master-arm64
       - 
         name: Setup QEMU
         uses: docker/setup-qemu-action@v1
