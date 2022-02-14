@@ -19,7 +19,7 @@ jobs:
     #  - checkout
       - run: |
           echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
-          git clone https://github.com/minetaro12/misskey -b docker-arm64
+          git clone https://github.com/minetaro12/misskey -b master-arm64
           cd misskey
           ver=`cat package.json | jq -r '.version'`
           docker buildx build -t minetaro12/misskey-arm64:latest -t minetaro12/misskey-arm64:$ver --push .
