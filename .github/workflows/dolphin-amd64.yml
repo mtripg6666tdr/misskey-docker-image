@@ -1,0 +1,38 @@
+name: dolphin amd64 - Build and Push
+
+on: [ workflow_dispatch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Get Version
+        id: version
+        run: |
+          ver=1.4.0-`TZ=Asia/Tokyo date +%Y%m%d`
+          echo "::set-output name=VER::$ver"
+      - 
+        name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: mei23/dolphin
+          ref: mei-dolphin
+      - 
+        name: Login to Github Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
+      - 
+        name: Build and Push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/dolphin:latest
+            ghcr.io/${{ github.repository_owner }}/dolphin:${{ steps.version.outputs.VER }}
+          cache-from: type=registry,ref=user/app:latest
+          cache-to: type=inline
