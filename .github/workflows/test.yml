@@ -1,4 +1,4 @@
-name: master arm64  - Build and Push
+name: test arm64  - Build and Push
 
 on: [ workflow_dispatch ]
 
