@@ -41,7 +41,7 @@ jobs:
           tags: |
             type=sha,enable=true
             type=sha,format=long
-            type=raw,value=latest,enable=${{ github.event_name == 'release' }}
+            type=raw,value=latest
             type=raw,value=${{ env.ver }}
             
       - name: Build and Push
