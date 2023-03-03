@@ -13,5 +13,5 @@ You'll have to create config files like `.config/docker.env` and `.config/defaul
 Now it should work then.
 
 ## Copyright
-The build script was originally written by [minetaro12](https://github.com/minetaro12) and sitributed under MIT License.  
+The build script was originally written by [minetaro12](https://github.com/minetaro12) and distributed under MIT License.  
 Thank you for the original author, minetaro12, and all contributors.
